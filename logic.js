@@ -34,7 +34,7 @@ Tweeter = function(){
     addComment = function(_id,text){
         for (i=0; i<=posts.length; i++) {
             if (posts[i]['_id'] == _id) {
-                let comment = {text: text, commentId: 'c' + ((posts[i]['comments']).length+1)}
+                let comment = {text: text, commentId: 'c' + (commentIdCounter+1)}
                 posts[i]['comments'].push(comment);
                 (() => commentIdCounter++)()                        //increase the comments counter
                 return
@@ -67,4 +67,3 @@ Tweeter = function(){
 }
 
 let tweeter = Tweeter()
-
