@@ -1,49 +1,65 @@
-$(document).ready(function () {
+// $(main.js).ready(function () {
 
 Renderer = function(){
     
-    let getDetails = GetPostDetails()
-    let getHtml    = CreateHTMLcontent()
-    
     renderPosts = function(posts){
+        // debugger
         $('#posts').empty()
         for (let post of posts) {
-            let         text = getDetails.text(post)
-            let     comments = getDetails.comments(post)
-            let          _id = getDetails._id(post)
-            let     postHtml = getHtml.postTemplate(text,comments,_id)
-            let commentsHtml = getHtml.commentTemplate(text,comments,_id)
-
+            
+            let  currentPost = getPostDetails(post)
+            let         text = currentPost.text
+            let     comments = currentPost.comments
+            let          _id = currentPost._id
+            let  currentHTML = createHTMLcontent(text,comments,_id)
+            let     postHtml = currentHTML.postTemplate
+            let commentsHtml = currentHTML.commentTemplate
+            
             $('#posts').append(postHtml)
-            $('#posts').append(commentsHtml)
+            $('div').find(`[data-id='${_id}']`).append(commentsHtml)
         }
     }
-
-    GetPostDetails = function(post){
-        let text     = post['text']
+    
+    getPostDetails = function(post){
+        let     text = post['text']
         let comments = []
-        let _id      = posts['_id'][1]
+        let      _id = post['_id'][1]
         for (i=0; i<(post['comments']).length; i++){
             comments.push(post['comments'][i])
         }
-        return {
+
+        let postDetails = {
             _id: _id,
             text: text,
             comments: comments
         }
+
+        return postDetails
     }
 
-    CreateHTMLcontent = function(text,comments,_id){
-        let commentId = comments['commentId']
-        let postTemplate = `<div class='post' id='${_id}'>Post:<br>${text}</div>`
-        let commentTemplate = `<div> class='comment' id='${commentId}'>Comments:<br>${comments}</div>`
-        return {
+    createHTMLcontent = function(text,comments,_id){
+        
+        let commentsArr = ['<br>', '<br>', 'Comments:', '<br>']
+        let commentId
+
+        for (let comment in comments){
+            let commentId      = comments[comment]['commentId']
+            let matchedComment = `<div class='comment' data-id='${commentId}'>${comments[comment]['text']}</div>`
+            commentsArr.push(matchedComment)
+        }
+        
+        let postTemplate = `<div class='post' data-id='${_id}'>Post:<br>${text}</div>`
+        let commentTemplate = commentsArr
+
+        let htmlContent = {
             postTemplate,
             commentTemplate
         }
-    }
 
-    return renderPosts
+        return htmlContent
+    }
+    
+    return {renderPosts}
 }
 
-});
+// });

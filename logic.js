@@ -1,8 +1,35 @@
+
 Tweeter = function(){
-    posts = []
+    
+    posts = [
+        {
+            _id: 'p1',
+            text: 'This is the first Post',
+            comments: [
+                {
+                    commentId: 'c1',
+                    text: 'great post!'   
+                },
+                {
+                    commentId: 'c2',
+                    text: 'You go girl'
+                }
+            ]
+        },
+        {
+            _id: 'p2',
+            text: 'This is the second Post',
+            comments: [
+                {
+                    commentId: 'c3',
+                    text: 'likeee!!!!111'
+                }
+            ]
+        }
+    ]
     
     let postIdCounter = 0                                      //to count the number of total posts
-
+    
     let commentIdCounter = 0                                //to count the number of total comments
 
     getPosts = function() {
