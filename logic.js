@@ -5,21 +5,21 @@ Tweeter = function(){
     posts = [
         {
             _id: 'p1',
-            text: 'This is the first Post',
+            text: 'What is love?',
             comments: [
                 {
                     commentId: 'c1',
-                    text: 'great post!'   
+                    text: 'baby don\'t hurt me'   
                 },
                 {
                     commentId: 'c2',
-                    text: 'You go girl'
+                    text: 'don\'t hurt me'
                 }
             ]
         },
         {
             _id: 'p2',
-            text: 'This is the second Post',
+            text: 'Go vegan!',
             comments: [
                 {
                     commentId: 'c3',
@@ -31,7 +31,7 @@ Tweeter = function(){
     
     let postIdCounter = 0                                      
     
-    let commentIdCounter = 0                               
+    let commentIdCounter = 3                               
 
     getPosts = function() {
         return posts

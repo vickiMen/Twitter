@@ -3,6 +3,21 @@ body{
     font-family: 'Balthazar', serif;
 }
 
+h1 {
+    font-size: 40px;
+    margin-top: 40px;
+    margin-left: 40px;
+    /* padding: 10px; */
+}
+
+img {
+    position: relative;
+    left: 10px;
+    top: 7px;
+    width: 35px;
+    height: 35px;
+}
+
 #container{
     display: grid;
     grid-gap: 20px;
@@ -19,7 +34,7 @@ body{
     display: grid;
     grid-area: hc; 
     grid-template-areas: ". i b .";
-    grid-gap: 20px;
+    grid-gap: 10px;
     grid-template-columns: 1fr 3fr 1fr 1fr;
 }
 
@@ -30,8 +45,8 @@ body{
 
 #input{
     grid-area: i;
-    width: 50vw;
-    padding: 10px;
+    width: 95%;
+    padding: 5px;
     font-size: 1.5vw;
 }
 
@@ -43,10 +58,10 @@ body{
 }
 
 #post{
-    width: 20vw;
+    width: 10vw;
     grid-area: b;
     padding: 5px;
-    background-color: #3498db;
+    background-color: #598CCA;
     border: 1px solid #2980b9;
     box-shadow: 1px 1px 5px #2c3e50;
     cursor: pointer;
@@ -56,11 +71,17 @@ body{
 }
 
 .post{
-    width: 70vw;
+    width: 50vw;
+    background-color: rgb(226, 237, 250);
     box-shadow: 1px 1px 3px;
     margin: 10px;
     border-radius: 5px;
-    padding: 15px;
+    /* padding: 15px; */
+    /* padding-left: 25px; */
+    padding-top: 20px;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-bottom: 15px;
     position: relative;
     font-family: Helvetica;
 }
@@ -71,15 +92,23 @@ body{
 
 
 .comments{
-    box-shadow: 1px 1px 3px;
-    background-color: #FFFFFF;
-    border-radius: 5px;
-    margin-left: 20px;
-    margin: 10px;
-    padding: 10px;
+    /* box-shadow: 1px 1px 3px; */
+    /* background-color: #FFFFFF; */
+    /* border-radius: 5px; */
+    margin-left: 0px;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 0px;
+    overflow-block: clip;
+
 }
 
 .comment {
+    box-shadow: 1px 1px 3px;
     font-size: 15px;
     margin: 5px;
     padding: 10px;
@@ -88,6 +117,7 @@ body{
     grid-area: c;
     max-width: 100vw;
     text-overflow: ellipsis;
+    min-height: max-content;
 }
 
 
@@ -120,7 +150,7 @@ body{
     grid-template-areas: "d c";
     position: relative;
     align-items: stretch;
-    grid-gap: 10px;
+    grid-gap: 15px;
 }
 
 .input-container {
@@ -129,9 +159,16 @@ body{
     grid-template-areas: ". i";
     position: relative;
     align-items: stretch;
+    grid-gap: 15px;
+}
+
+
+.delCmtBtn:hover {
+    opacity: 100%;
 }
 
 .delCmtBtn {
+    box-shadow: 1px 1px 3px;
     display: flex;
     cursor: pointer;
     width: 30px;
@@ -147,15 +184,20 @@ body{
     grid-area: d;
     border-radius: 30px;
     background-color: #F2F3F5;
+    opacity: 0%;
 }
 
 
 .cmtTextBox {
+    box-shadow: 1px;
     background-color: #FFFFFF;
     border-radius: 15px;
     grid-area: i;
-    font-size: 10px;
-    margin: 5px;
+    font-size: 12px;
+    margin-top: 10px;
+    margin-left: 5px;
     padding: 10px;
-    text-overflow: ellipsis;
+    /* text-overflow: clip; */
+    min-height: max-content;
+    width: 95.5%;
 }
