@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script src="https://kit.fontawesome.com/a0797b260b.js" crossorigin="anonymous"></script>
     <title>Tweeter</title>
     <link href="https://fonts.googleapis.com/css?family=Balthazar" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
@@ -9,9 +10,12 @@
     
     <div id="container">
         <h1 id="title">Tweeter</h1>
-        <input type="text" placeholder="What's on your mind?" id="input">
-        <div id="post" onclick="addPost()">Twit</div>
+        <div id='header-container'>
+            <input type="text" placeholder="What's on your mind?" id="input"></input>
+            <div id="post">Twit</div>
+        </div>
         <div id="posts"></div>
+        <!-- <div class='delete'>X</div> -->
     </div>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

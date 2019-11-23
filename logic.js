@@ -1,3 +1,4 @@
+// $(document).ready(function () {
 
 Tweeter = function(){
     
@@ -28,60 +29,71 @@ Tweeter = function(){
         }
     ]
     
-    let postIdCounter = 0                                      //to count the number of total posts
+    let postIdCounter = 0                                      
     
-    let commentIdCounter = 0                                //to count the number of total comments
+    let commentIdCounter = 0                               
 
     getPosts = function() {
-        //that returns the posts array
         return posts
     } 
 
     addPost = function(text){                
-        if (posts.length == 0) {                                 // generate id for the first time
+        if (posts.length == 0) {
             generateId = () => 'p1'
         }
         else {
-           generateId = () => 'p' + (parseInt(posts[(posts.length)-1]._id[1]) + 1)
+            let newId = posts[(posts.length)-1]._id
+            newId = newId.slice(1)
+            generateId = () => 'p' + (parseInt(newId) + 1) 
         }
         posts.push({
             _id: generateId(),
             text: text, 
             comments: []
-        });
-        (() => postIdCounter++)()                                     // increase the posts counter
+        })
+        postIdCounter++
+        return
     }
 
-    removePost = function(_id){
-        let index = parseInt(_id[1]) - 1
-        posts.splice(posts[index],1);
-        (() => postIdCounter--)() //decrease the posts counter
+    removePost = function(postId){
+        let removedPost
+        for (i=0; i<posts.length; i++) {
+            if (posts[i]['_id'] == postId) {
+                removedPost = posts[i]
+                break
+            }
+        }
+        let index = posts.indexOf(removedPost)
+        posts.splice(index,1);
+        postIdCounter--
+        return
     }
     
     addComment = function(_id,text){
         for (i=0; i<=posts.length; i++) {
             if (posts[i]['_id'] == _id) {
-                let comment = {text: text, commentId: 'c' + (commentIdCounter+1)}
+                let comment = {
+                    text: text, 
+                    commentId: 'c' + (commentIdCounter+1)
+                }
                 posts[i]['comments'].push(comment);
-                (() => commentIdCounter++)()                        //increase the comments counter
+                commentIdCounter++
                 return
             }
         }
     }
 
-    removeComment = function(_id, commentId) {
+    removeComment = function(commentId) {
         for (i=0; i<posts.length; i++) {
-            if (posts[i]['_id'] == _id) {
-                for (j=0; j<posts[i]['comments'].length; j++) {
-                    if (posts[i]['comments'][j]['commentId'] == commentId) {
-                        posts[i]['comments'].splice(j,1);
-                        (() => commentIdCounter--)()                // decrease the comments counter
-                        return
+            for (j=0; j<posts[i]['comments'].length; j++) {
+                if (posts[i]['comments'][j]['commentId'] == commentId) {
+                    posts[i]['comments'].splice(j,1);
+                    commentIdCounter--
+                    return
                 }
             }
         }
     }
-}
 
     return {
         getPosts,
@@ -93,4 +105,4 @@ Tweeter = function(){
 
 }
 
-// let tweeter = Tweeter()
+// })

@@ -10,7 +10,17 @@ body{
     padding-right: 25px;
     grid-template-columns: 3fr 1fr;
     grid-template-areas: 
-    "h .""i b""p p"
+    "h ."
+    "hc hc"
+    "p p";
+}
+
+#header-container {
+    display: grid;
+    grid-area: hc; 
+    grid-template-areas: ". i b .";
+    grid-gap: 20px;
+    grid-template-columns: 1fr 3fr 1fr 1fr;
 }
 
 #header{
@@ -20,17 +30,22 @@ body{
 
 #input{
     grid-area: i;
+    width: 50vw;
     padding: 10px;
     font-size: 1.5vw;
 }
 
 #posts{
     grid-area: p;
+    display: grid;
+    grid-gap: 5px;
+    justify-items: center;
 }
 
 #post{
+    width: 20vw;
     grid-area: b;
-    padding: 10px;
+    padding: 5px;
     background-color: #3498db;
     border: 1px solid #2980b9;
     box-shadow: 1px 1px 5px #2c3e50;
@@ -41,36 +56,106 @@ body{
 }
 
 .post{
+    width: 70vw;
     box-shadow: 1px 1px 3px;
     margin: 10px;
     border-radius: 5px;
-    padding: 10px;
+    padding: 15px;
+    position: relative;
+    font-family: Helvetica;
 }
 
 #post:active{
     background-color: #2980b9
 }
 
-.post-text{
-    font-weight: bold;
-}
 
 .comments{
-    margin-left: 10px;
+    box-shadow: 1px 1px 3px;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    margin-left: 20px;
     margin: 10px;
+    padding: 10px;
 }
 
-.delete{
+.comment {
+    font-size: 15px;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: #F2F3F5;
+    grid-area: c;
+    max-width: 100vw;
+    text-overflow: ellipsis;
+}
+
+
+.delPostBtn {
     cursor: pointer;
-    color: #ecf0f1;
-    background-color: #e74c3c;
     display: inline-block;
-    padding: 5px;
-    border-radius: 3px;
-    font-size: 0.8em;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    padding: 15px;
 }
 
-.delete-comment{
+.cmtBtn {
     cursor: pointer;
-    color: #e74c3c;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    padding: 15px;
+    right: 35px;
+    top: 0px;
+}
+
+
+.comment-container {
+    display: grid;
+    grid-template-columns: 1fr 30fr;
+    grid-template-areas: "d c";
+    position: relative;
+    align-items: stretch;
+    grid-gap: 10px;
+}
+
+.input-container {
+    display: grid;
+    grid-template-columns: 1fr 30fr;
+    grid-template-areas: ". i";
+    position: relative;
+    align-items: stretch;
+}
+
+.delCmtBtn {
+    display: flex;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 0px;
+    top: 7px;
+    justify-content: center;
+    justify-items: center;
+    align-items:  center;
+    align-content: center;
+    padding: 2px;
+    grid-area: d;
+    border-radius: 30px;
+    background-color: #F2F3F5;
+}
+
+
+.cmtTextBox {
+    background-color: #FFFFFF;
+    border-radius: 15px;
+    grid-area: i;
+    font-size: 10px;
+    margin: 5px;
+    padding: 10px;
+    text-overflow: ellipsis;
 }
